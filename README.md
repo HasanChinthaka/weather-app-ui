@@ -1,8 +1,10 @@
 # Setup env file
 
-Rename exmple.env --> .env
+1. Rename exmple.env --> .env
 
-Add open wather APi Key
+2. Register on [OpenWeatherMap](https://openweathermap.org/) to obtain an API key.
+
+3. Add open wather Api Key
 
 # Run Project
 
