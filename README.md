@@ -1,39 +1,73 @@
-# Setup env file
+# 🌦 Weather Project
 
-Client
+This project consists of a **client** (frontend) and **server** (backend) setup.  
+It integrates with **OpenWeatherMap** to fetch weather data and uses **Brevo** for email notifications.
 
-    1. Rename exmple.env --> .env
+---
 
-    2. Register on [OpenWeatherMap](https://openweathermap.org/) to obtain an API key.
+## 📂 Environment File Setup
 
-    3. Add open wather API Key
+### 🖥 Client
 
-Server
+1. Rename `example.env` → `.env`
+2. Register on [OpenWeatherMap](https://openweathermap.org/) to obtain an API key.
+3. Add your **OpenWeatherMap API key** to the `.env` file.
 
-    1. Add Mongo db link and project name
+### ⚙️ Server
 
-    2. Create [Brevo](https://app.brevo.com/) accounnt and add smtpsever details
+1. Rename `example.env` → `.env`
+2. Add your **MongoDB connection link** and **project name** to the `.env` file.
+3. Create an account on [Brevo](https://app.brevo.com/) and add SMTP server details to the `.env` file.
+4. Set your Brevo account email as the `SENDER_MAIL`.
 
-    3. Add brevo account mail as the SENDER_MAIL
+---
 
-# Run Project
+## 🚀 Running the Project
 
-1. Install dependencies (need to be run in both client and server folders)
+### 1️⃣ Install dependencies
 
-   ```bash
-   npm install
-   ```
+Run this command **in both** the `client` and `server` folders:
 
-2. Recheck .env file variable (check in both client and server folders)
+````bash
+npm install
 
-3. Run sever in local (open cmd in server folder and run this command)
+### 2️⃣ Verify environment variables
+Make sure the .env file in both the client and server folders is correctly configured.
 
-    ````bash
-      npm run server
-    ```
+### 3️⃣ Run the Server
+From the server folder:
+```bash
+npm run server
 
-4. Run client in local (open cmd in client folder and run this command)
+### 4️⃣ Run the Client
+From the client folder:
+```bash
+npm run dev
+````
 
-    ```bash
-      npm run dev
-    ```
+## 📋 Requirements
+Node.js (Latest LTS version recommended)
+
+npm
+
+MongoDB
+
+OpenWeatherMap API key
+
+Brevo account for SMTP setup
+
+## 📁 Folder Structure
+project-root/
+│
+├── client/       # Frontend application
+│   ├── src/
+│   └── .env
+│
+├── server/       # Backend application
+│   ├── src/
+│   └── .env
+│
+└── README.md
+
+## 📄 License
+This project is licensed under the MIT License – feel free to use and modify as you wish.
