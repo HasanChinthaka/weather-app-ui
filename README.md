@@ -30,44 +30,47 @@ Run this command **in both** the `client` and `server` folders:
 
 ````bash
 npm install
+````
 
 ### 2️⃣ Verify environment variables
 Make sure the .env file in both the client and server folders is correctly configured.
 
 ### 3️⃣ Run the Server
 From the server folder:
-```bash
-npm run server
 
+````bash
+npm run server
+````
 ### 4️⃣ Run the Client
 From the client folder:
-```bash
+
+````bash
 npm run dev
 ````
 
 ## 📋 Requirements
-Node.js (Latest LTS version recommended)
+    Node.js (Latest LTS version recommended)
 
-npm
+    npm
 
-MongoDB
+    MongoDB
 
-OpenWeatherMap API key
+    OpenWeatherMap API key
 
-Brevo account for SMTP setup
+    Brevo account for SMTP setup
 
 ## 📁 Folder Structure
-project-root/
-│
-├── client/       # Frontend application
-│   ├── src/
-│   └── .env
-│
-├── server/       # Backend application
-│   ├── src/
-│   └── .env
-│
-└── README.md
+    project-root/
+    │
+    ├── client/       # Frontend application
+    │   ├── src/
+    │   └── .env
+    │
+    ├── server/       # Backend application
+    │   ├── src/
+    │   └── .env
+    │
+    └── README.md
 
 ## 📄 License
 This project is licensed under the MIT License – feel free to use and modify as you wish.
