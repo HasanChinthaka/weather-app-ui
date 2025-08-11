@@ -4,7 +4,7 @@
 
 2. Register on [OpenWeatherMap](https://openweathermap.org/) to obtain an API key.
 
-3. Add open wather Api Key
+3. Add open wather API Key
 
 # Run Project
 
