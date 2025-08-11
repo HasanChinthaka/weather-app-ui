@@ -53,20 +53,21 @@ const WeatherCard = ({ cityCode }: props) => {
             {loading ?
                 <Loading />
                 :
-                <div className="w-2xl">
-                    <div className="hover:scale-x-105 hover:scale-y-105 hover:cursor-pointer" onClick={() => handleWeatherCard()}>
-                        <div className="relative text-white top-10 -right-158 text-2xl">
-                            <LiaTimesSolid className="text-right hover:text-red-500 hover:font-bold hover:cursor-pointer" />
+                <div className="md:w-2xl p-4 md:p-0">
+                    <div className="xl:hover:scale-x-105 hover:scale-y-105 hover:cursor-pointer" onClick={() => handleWeatherCard()}>
+                        <div className="relative flex justify-end md:top-10 top-8 pe-4 text-white md:text-2xl text-base">
+                            <LiaTimesSolid className="text-right hover:text-blue-800 hover:font-bold hover:cursor-pointer"
+                            />
                         </div>
                         <div
-                            className={`${data?.weather?.[0]?.description === 'clear sky' ? 'bg-[#40b781]' : data?.weather?.[0]?.description === 'light rain' ? 'bg-[#de934f]' : data?.weather?.[0]?.description === 'broken clouds' ? 'bg-[#6249cb]' : data?.weather?.[0]?.description === 'mist' ? 'bg-[#9c3a39]' : 'bg-[#388de7]'} pt-12 pb-10 px-18 rounded-t-lg text-white  mx-auto bg-cover bg-no-repeat`}
+                            className={`${data?.weather?.[0]?.description === 'clear sky' ? 'bg-[#40b781]' : data?.weather?.[0]?.description === 'light rain' ? 'bg-[#de934f]' : data?.weather?.[0]?.description === 'broken clouds' ? 'bg-[#6249cb]' : data?.weather?.[0]?.description === 'mist' ? 'bg-[#9c3a39]' : 'bg-[#388de7]'} md:pt-12 md:pb-10 md:px-18 p-5 rounded-t-lg text-white  mx-auto bg-cover bg-no-repeat`}
                             style={{ backgroundImage: "url('/src/assets/weather-card-bg.png')" }}
                         >
                             <div className="flex justify-between items-center">
                                 <div className="text-center">
-                                    <h2 className="text-3xl font-semibold">{data?.name}, {data?.sys?.country}</h2>
+                                    <h2 className="md:text-3xl text-lg font-semibold">{data?.name}, {data?.sys?.country}</h2>
                                     {data?.timezone !== undefined ? (
-                                        <>
+                                        <div className="md:text-base text-sm">
                                             {getLocalTimeForTimezone(data.timezone).toLocaleTimeString([], {
                                                 hour: 'numeric',
                                                 minute: 'numeric',
@@ -76,12 +77,12 @@ const WeatherCard = ({ cityCode }: props) => {
                                                 month: 'short',
                                                 day: 'numeric'
                                             })}
-                                        </>
+                                        </div>
                                     ) : (
                                         'N/A'
                                     )}
                                 </div>
-                                <p className="text-5xl font-semibold">{(data?.main?.temp?.toFixed(1))}°C</p>
+                                <p className="md:text-5xl text-2xl font-semibold">{(data?.main?.temp?.toFixed(1))}°C</p>
 
                             </div>
 
@@ -90,9 +91,9 @@ const WeatherCard = ({ cityCode }: props) => {
                                     <img
                                         src={`https://openweathermap.org/img/wn/${data?.weather?.[0]?.icon}@2x.png`}
                                         alt={data?.weather?.[0]?.description}
-                                        className="w-10"
+                                        className="md:w-10 w-6"
                                     />
-                                    <p className="text-xl">{capitalizeWords(data?.weather?.[0]?.description ?? '')}</p>
+                                    <p className="md:text-xl text-sm">{capitalizeWords(data?.weather?.[0]?.description ?? '')}</p>
 
                                 </div>
                                 <div className="text-center">
@@ -101,18 +102,18 @@ const WeatherCard = ({ cityCode }: props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-[#383b47] py-10 px-9 rounded-b-lg text-white flex justify-between text-base items-center">
+                        <div className="bg-[#383b47] md:py-10 md:px-9 p-2 rounded-b-lg text-white flex justify-between text-base items-center">
                             <div className="flex justify-left flex-col gap-1">
                                 <p>Pressure: {data?.main?.pressure}hPa</p>
                                 <p>Humidity: {data?.main?.humidity}%</p>
                                 <p>Visibility: {data?.visibility !== undefined ? (data.visibility / 1000).toFixed(1) + 'km' : 'N/A'}</p>
                             </div>
-                            <hr className="w-16 rotate-90" />
+                            <hr className="md:w-16 rotate-90" />
                             <div className="flex items-center flex-col gap-1">
-                                <FiNavigation className="text-xl" />
+                                <FiNavigation className="md:text-xl text-base" />
                                 <p>{data?.wind?.speed}m/s {data?.wind?.deg} Degree</p>
                             </div>
-                            <hr className="w-16 rotate-90" />
+                            <hr className="md:w-16 rotate-90" />
                             <div className="flex flex-col gap-1">
                                 <p>
                                     Sunrise: {data?.sys?.sunrise !== undefined && data?.timezone !== undefined

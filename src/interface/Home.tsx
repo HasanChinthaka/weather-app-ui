@@ -12,7 +12,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
+        <div className='w-screen'>
             <div
                 className="flex flex-col h-128 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: "url('/src/assets/bg-2.png')" }}
@@ -20,9 +20,9 @@ const Home = () => {
                 <Title />
                 <AddCity />
             </div>
-            <div className="-mt-56 grid grid-cols-1 md:grid-cols-2 justify-center">
+            <div className="-mt-56 grid grid-cols-1 xl:grid-cols-2 justify-center">
                 {codes && codes.map(code => (
-                    <div className="p-6">
+                    <div className="flex justify-center py-4">
                         <WeatherCard key={code} cityCode={code} />
                     </div>
                 ))}

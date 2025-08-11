@@ -53,7 +53,7 @@ const SingleWeatherCard = ({ cityCode }: props) => {
             {loading ?
                 <Loading />
                 :
-                <div className="w-4xl">
+                <div className="xl:w-4xl md:w-2xl p-2 md:p-0">
                     <div
                         className="bg-[#388de7] p-4 rounded-t-lg text-white  mx-auto bg-cover bg-no-repeat"
                     >
@@ -82,7 +82,7 @@ const SingleWeatherCard = ({ cityCode }: props) => {
                                     'N/A'
                                 )}
                             </div>
-                            <div className="flex justify-center items-center py-8">
+                            <div className="md:flex justify-center items-center py-8">
                                 <div className="flex flex-col items-center">
                                     <img
                                         src={`https://openweathermap.org/img/wn/${data?.weather?.[0]?.icon}@2x.png`}
@@ -92,9 +92,9 @@ const SingleWeatherCard = ({ cityCode }: props) => {
                                     <p className="text-xl">{capitalizeWords(data?.weather?.[0]?.description ?? '')}</p>
 
                                 </div>
-                                <hr className="w-24 rotate-90" />
+                                <hr className="md:w-24 w-0 rotate-90" />
                                 <div className="flex flex-col items-center gap-4 text-center">
-                                    <p className="text-5xl">{(data?.main?.temp?.toFixed(1))}°C</p>
+                                    <p className="md:text-5xl text-2xl md:mt-0 mt-4 font-bold md:font-medium">{(data?.main?.temp?.toFixed(1))}°C</p>
                                     <div>
                                         <p>Temp Min: {(data?.main?.temp_min?.toFixed(1))}°C</p>
                                         <p>Temp Max: {(data?.main?.temp_max?.toFixed(1))}°C</p>
@@ -103,18 +103,18 @@ const SingleWeatherCard = ({ cityCode }: props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#383b47] w-full py-10 px-36 rounded-b-lg text-white flex justify-between text-base items-center">
+                    <div className="bg-[#383b47] w-full md:py-10 py-4 xl:px-36 md:px-16 px-4 rounded-b-lg text-white flex justify-between text-base items-center">
                         <div className="flex justify-left flex-col gap-1">
                             <p>Pressure: {data?.main?.pressure}hPa</p>
                             <p>Humidity: {data?.main?.humidity}%</p>
                             <p>Visibility: {data?.visibility !== undefined ? (data.visibility / 1000).toFixed(1) + 'km' : 'N/A'}</p>
                         </div>
-                        <hr className="w-16 rotate-90" />
+                        <hr className="md:w-16 rotate-90" />
                         <div className="flex items-center flex-col gap-1">
                             <FiNavigation className="text-xl" />
                             <p>{data?.wind?.speed}m/s {data?.wind?.deg} Degree</p>
                         </div>
-                        <hr className="w-16 rotate-90" />
+                        <hr className="md:w-16 rotate-90" />
                         <div className="flex flex-col gap-1">
                             <p>
                                 Sunrise: {data?.sys?.sunrise !== undefined && data?.timezone !== undefined
