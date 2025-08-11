@@ -7,8 +7,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
     return (
-        <div className="flex flex-col bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/src/assets/bg-2.png')" }}
+        <div className="flex flex-col bg-[#1d2027]"
         >
             <main className='flex-glow min-h-screen'>
                 {children}

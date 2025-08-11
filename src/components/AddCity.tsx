@@ -10,7 +10,7 @@ const AddCity = () => {
                     />
                     <button
                         type="submit"
-                        className="flex justify-center items-center bg-[#6c5dd3] text-white rounded-md w-32 text-lg"
+                        className="flex justify-center items-center bg-[#6c5dd3] hover:bg-[#5448a3] hover:cursor-pointer text-white rounded-md w-32 text-lg"
                     >
                         Add City
                     </button>

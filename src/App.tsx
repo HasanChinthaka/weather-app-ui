@@ -1,16 +1,12 @@
-import AddCity from "./components/AddCity"
-import Title from "./components/Title"
-import WeatherCard from "./components/WeatherCard"
-
+// import SingleWeatherCard from "./components/SingleWeatherCard"
+import Home from "./interface/Home"
 
 const App = () => {
+
   return (
     <div>
-      <Title />
-      <AddCity />
-      <div className="mt-22 flex justify-center">
-        <WeatherCard />
-      </div>
+      <Home />
+      {/* <SingleWeatherCard cityCode="1248991"/> */}
     </div>
   )
 }
