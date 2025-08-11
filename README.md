@@ -1,5 +1,9 @@
 # 🌦 Weather Project
 
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+[![npm](https://img.shields.io/npm/v/npm?color=blue)](https://www.npmjs.com/)
+
 This project consists of a **client** (frontend) and **server** (backend) setup.  
 It integrates with **OpenWeatherMap** to fetch weather data and uses **Brevo** for email notifications.
 
@@ -49,15 +53,13 @@ npm run dev
 ````
 
 ## 📋 Requirements
-    Node.js (Latest LTS version recommended)
 
-    npm
+- **Node.js** (Latest LTS version recommended)
+- **npm**
+- **MongoDB**
+- **OpenWeatherMap API key**
+- **Brevo account** for SMTP setup
 
-    MongoDB
-
-    OpenWeatherMap API key
-
-    Brevo account for SMTP setup
 
 ## 📁 Folder Structure
     project-root/
