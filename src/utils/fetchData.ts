@@ -1,13 +1,26 @@
-export const fetchData = async (cityCode: string, setData: (data: any) => void) => {
+export const fetchData = async (
+  cityCode: string,
+  setData: (data: any) => void,
+  setLoading: (loading: boolean) => void
+) => {
   try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/weather?id=${cityCode}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`);
+    setLoading(true);
+    const res = await fetch(
+      `${
+        import.meta.env.VITE_API_URL
+      }/weather?id=${cityCode}&units=metric&appid=${
+        import.meta.env.VITE_WEATHER_API_KEY
+      }`
+    );
 
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     const res_data = await res.json();
     setData(res_data);
+    setLoading(false);
   } catch (error: any) {
-    console.log('error', error);
+    setLoading(false);
+    console.log("error", error);
   }
 };

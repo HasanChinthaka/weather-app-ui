@@ -1,13 +1,16 @@
-// import SingleWeatherCard from "./components/SingleWeatherCard"
+import { Route, Routes } from "react-router-dom"
+import SingleCard from "./interface/SingleCard"
 import Home from "./interface/Home"
 
 const App = () => {
 
   return (
-    <div>
-      <Home />
-      {/* <SingleWeatherCard cityCode="1248991"/> */}
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/weather/:cityCode" element={<SingleCard />} />
+    </Routes>
+    </>
   )
 }
 
