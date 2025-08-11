@@ -1,6 +1,6 @@
 const Title = () => {
     return (
-        <div className="flex justify-center items-center gap-4 mt-20">
+        <div className="flex justify-center items-center gap-4">
             <img
                 src="/src/assets/logo.png"
                 className="h-14"
