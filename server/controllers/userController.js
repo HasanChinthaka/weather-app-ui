@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import transporter from '../configs/nodemailer.js';
+import oauth2client from "../configs/googleOAuth.js";
 
 // Generate a JWT token
 const generateToken = (userId) => {
@@ -90,6 +91,60 @@ export const loginUser = async (req, res) => {
     }
 }
 
+// Register with google account
+export const loginWithGoogle = async (req, res) => {
+    try {
+        console.log("query",req.body)
+        const { code } = req.body;
+        const googleRes = await oauth2client.getToken(code);
+        oauth2client.setCredentials(googleRes.tokens);
+
+        const userRes = await fetch(
+            `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`
+        //     {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        )
+        const userData = await userRes.json();
+console.log(userData)
+        const { email, name, picture } = userData;
+
+        // Check if user already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.json({ success: false, message: 'User already exists' });
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash('pa$$w0rd', 10);
+
+        // Create new user
+        const user = await User.create({
+            name,
+            email,
+            password: hashedPassword,
+        });
+
+        const token = generateToken(user._id.toString());
+
+        // Sending email
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: 'Welcome Weather APP',
+            text: `Welcome to weather app, ${name}. Your account has been created with email ${email}.`
+        }
+        await transporter.sendMail(mailOptions);
+
+        res.json({ success: true, token })
+
+    } catch (error) {
+console.log("error loging  with google",error)
+    }
+}
+
 // Logout
 export const logoutUser = async (req, res) => {
     try {
@@ -101,8 +156,7 @@ export const logoutUser = async (req, res) => {
     }
 }
 
-// 
-
+// otp email
 export const sendVerifyOtp = async (req, res) => {
     try {
         const userId = req.user;
@@ -137,6 +191,7 @@ export const sendVerifyOtp = async (req, res) => {
     }
 }
 
+// verify otp
 export const verifyEmail = async (req, res) => {
     const userId = req.user;
     const { otp } = req.body;
@@ -173,9 +228,10 @@ export const verifyEmail = async (req, res) => {
     }
 }
 
+// checck authenticated or not
 export const isAuthenticated = async (req, res) => {
     try {
-        return res.json({success:true, message:'User authenticated'})
+        return res.json({ success: true, message: 'User authenticated' })
     } catch (error) {
         console.error('Error :', error.message);
         return res.json({ success: false, message: error.message });
